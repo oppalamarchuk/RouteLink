@@ -1,0 +1,6 @@
+@RouteLinkApi_HostAddress = http://localhost:5074
+
+GET {{RouteLinkApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
