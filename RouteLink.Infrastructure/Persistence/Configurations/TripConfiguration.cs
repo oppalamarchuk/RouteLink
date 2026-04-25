@@ -16,7 +16,7 @@ public class TripConfiguration : IEntityTypeConfiguration<Trip>
         builder.Property(x => x.StartPoint).HasMaxLength(256).IsRequired();
         builder.Property(x => x.EndPoint).HasMaxLength(256).IsRequired();
         builder.Property(x => x.PlannedDistanceKm).HasPrecision(10, 2).IsRequired();
-        builder.Property(x => x.ExecutionStatus).HasMaxLength(64).IsRequired();
+        builder.Property(x => x.ExecutionStatus).HasConversion<string>().HasMaxLength(64).IsRequired();
         builder.Property(x => x.CreatedAt).IsRequired();
 
         builder.HasIndex(x => x.TripNumber).IsUnique();
@@ -24,11 +24,6 @@ public class TripConfiguration : IEntityTypeConfiguration<Trip>
         builder.HasOne(x => x.DriverUser)
             .WithMany(x => x.DriverTrips)
             .HasForeignKey(x => x.DriverUserId)
-            .OnDelete(DeleteBehavior.Restrict);
-
-        builder.HasOne(x => x.CreatedByUser)
-            .WithMany(x => x.CreatedTrips)
-            .HasForeignKey(x => x.CreatedByUserId)
             .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(x => x.Transport)

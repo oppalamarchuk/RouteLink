@@ -15,7 +15,7 @@ public class FuelRefillConfiguration : IEntityTypeConfiguration<FuelRefill>
         builder.Property(x => x.Liters).HasPrecision(10, 2).IsRequired();
         builder.Property(x => x.TotalAmount).HasPrecision(10, 2).IsRequired();
         builder.Property(x => x.Odometer).HasPrecision(12, 2).IsRequired();
-        builder.Property(x => x.Location).HasColumnType("geography").IsRequired();
+        builder.Property(x => x.Location).HasColumnType("geometry(Point, 4326)").IsRequired();
         builder.Property(x => x.ReceiptPath).HasMaxLength(1024).IsRequired();
         builder.Property(x => x.CreatedAt).IsRequired();
 

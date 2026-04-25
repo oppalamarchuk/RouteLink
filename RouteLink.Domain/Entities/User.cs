@@ -11,6 +11,5 @@ public class User
     public DateTime CreatedAt { get; set; }
 
     public ICollection<Trip> DriverTrips { get; set; } = new List<Trip>();
-    public ICollection<Trip> CreatedTrips { get; set; } = new List<Trip>();
     public ICollection<FuelRefill> FuelRefills { get; set; } = new List<FuelRefill>();
 }
